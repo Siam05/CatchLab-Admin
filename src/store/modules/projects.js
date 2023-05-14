@@ -73,6 +73,7 @@ const actions = {
                 details: payload.projects.details,
                 featured: payload.projects.featured,
                 category: payload.projects.category,
+                link: payload.projects.link,
                 image: payload.projects.image
             }
             ,config).then(result => {
