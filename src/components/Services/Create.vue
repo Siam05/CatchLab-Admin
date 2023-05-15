@@ -36,7 +36,7 @@
     </div>
 </template>
 
-<script>
+<script> 
 import InputText from 'primevue/inputtext';
 import Toast from 'primevue/toast';
 import Editor from 'primevue/editor';
