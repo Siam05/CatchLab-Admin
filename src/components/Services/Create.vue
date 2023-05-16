@@ -22,10 +22,10 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Description</p>
                         <Editor v-model="service.description" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -53,7 +53,7 @@ export default {
             host: "https://catchlab-api.smicee.com",
             service: {
                 title: "",
-                description: "",
+                description: "something",
                 icon: ""
             }
         }
@@ -66,7 +66,7 @@ export default {
                 if(response.data.code == 200) { 
                     this.$toast.add({severity: 'success', summary: 'Success!', detail: response.data.response, closable: false, life: 3000})
                     this.service.title= ""
-                    this.service.description = ""
+                    this.service.description = "something"
                     this.service.icon = null
                 }
                 else {

@@ -69,8 +69,8 @@ const actions = {
         let response = await axios.patch(V1API.edit_category + payload.id,
             {
                 title: payload.categories.title,
-                description: payload.categories.description,
-                image: payload.categories.image
+                // description: payload.categories.description,
+                // image: payload.categories.image
             }
             ,config).then(result => {
             let items = result.data.data

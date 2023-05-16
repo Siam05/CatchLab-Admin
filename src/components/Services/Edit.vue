@@ -21,10 +21,10 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Description</p>
                         <Editor v-model="temp_service.description" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -56,7 +56,7 @@ export default {
             temp_service: {
                 id: null,
                 title: "",
-                description: "",
+                description: "something",
                 icon: null
             },
             show_icon: null

@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Image</p>
                         <div class="flex items-center">
                             <img class="h-40 w-40" :src="show_image">
@@ -74,7 +74,7 @@
                     <div class="pb-4">
                         <p class="pb-1 text-gray-500">Details</p>
                         <Editor v-model="temp_project.details" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -108,13 +108,13 @@ export default {
             temp_project: {
                 title: "",
                 client_name: "",
-                details: "",
+                // details: "",
                 featured: null,
                 category: null,
                 link: null,
-                image: null
+                // image: null
             },
-            show_image: null,
+            // show_image: null,
 
             statuses: [
                 {
@@ -146,11 +146,11 @@ export default {
             this.temp_project.id = this.projects.id
             this.temp_project.title = this.projects.title
             this.temp_project.client_name = this.projects.client_name
-            this.temp_project.details = this.projects.details
+            // this.temp_project.details = this.projects.details
             this.temp_project.featured = this.projects.featured
             this.temp_project.category = this.projects.category.id
             this.temp_project.link = this.projects.link
-            this.show_image = this.host + this.projects.image
+            // this.show_image = this.host + this.projects.image
         }
     },
 
@@ -169,15 +169,15 @@ export default {
             })
         },
 
-        projectImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e =>{
-                this.temp_project.image = e.target.result;
-                this.show_image = e.target.result;
-            };
-        }
+        // projectImage(e){
+        //     const image = e.target.files[0];
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(image);
+        //     reader.onload = e =>{
+        //         this.temp_project.image = e.target.result;
+        //         this.show_image = e.target.result;
+        //     };
+        // }
     }
 }
 </script>

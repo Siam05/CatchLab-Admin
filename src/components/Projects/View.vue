@@ -28,11 +28,11 @@
                             </template>
                         </Column>
 
-                        <Column :exportable="false" header="Image" :sortable="true" style="min-width:15rem">
+                        <!-- <Column :exportable="false" header="Image" :sortable="true" style="min-width:15rem">
                             <template #body="{data}">
                                 <img class="rounded-md w-20 h-20" :src="host + data.image" alt="">
                             </template>
-                        </Column>
+                        </Column> -->
 
                         <Column header="Action" :exportable="false" style="min-width:10rem">
                             <template #body="slotProps">

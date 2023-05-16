@@ -13,18 +13,18 @@
                         <InputText type="text" class="w-full dropdown-height" v-model="temp_category.title" placeholder="Service title" />
                     </div>
 
-                    <div class="pb-6">
+                    <!-- <div class="pb-6">
                         <p class="pb-1 text-gray-500">Image</p>
                         <div class="flex items-center">
                             <img class="h-40 w-40" :src="show_image">
                             <input class="ml-4" type="file" accept="image/*" @change="categoryImage">
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Description</p>
                         <Editor v-model="temp_category.description" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -56,10 +56,10 @@ export default {
             temp_category: {
                 id: null,
                 title: "",
-                description: "",
-                image: null
+                // description: "",
+                // image: null
             },
-            show_image: null
+            // show_image: null
         }
     },
 
@@ -77,8 +77,8 @@ export default {
         categories(oldValue, newValue) {
             this.temp_category.id = this.categories.id
             this.temp_category.title = this.categories.title
-            this.temp_category.description = this.categories.description
-            this.show_image = this.host + this.categories.image
+            // this.temp_category.description = this.categories.description
+            // this.show_image = this.host + this.categories.image
         }
     },
 
@@ -97,15 +97,15 @@ export default {
             })
         },
 
-        categoryImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e =>{
-                this.temp_category.image = e.target.result;
-                this.show_image = e.target.result;
-            };
-        }
+        // categoryImage(e){
+        //     const image = e.target.files[0];
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(image);
+        //     reader.onload = e =>{
+        //         this.temp_category.image = e.target.result;
+        //         this.show_image = e.target.result;
+        //     };
+        // }
     }
 }
 </script>

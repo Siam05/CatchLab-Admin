@@ -70,11 +70,11 @@ const actions = {
             {
                 title: payload.projects.title,
                 client_name: payload.projects.client_name,
-                details: payload.projects.details,
+                // details: payload.projects.details,
                 featured: payload.projects.featured,
                 category: payload.projects.category,
                 link: payload.projects.link,
-                image: payload.projects.image
+                // image: payload.projects.image
             }
             ,config).then(result => {
             let items = result.data.data

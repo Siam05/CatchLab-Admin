@@ -11,7 +11,7 @@
             <!-- Dashboard -->
             <div class="my-1">
                 <router-link to="/">
-                    <p @click="showDashboard" :class="{ 'clicked': $route.meta.isDashboardOpen || displayDashboard }" class="px-6 py-3 font-semibold mb-2 flex items-center rounded-md text-white"><i class="pi pi-home pr-5" style="font-size: 1.2rem"></i>Dashboard</p>
+                    <p @click="showDashboard" :class="{ 'clicked': $route.meta.isDashboardOpen }" class="px-6 py-3 font-semibold mb-2 flex items-center rounded-md text-white"><i class="pi pi-home pr-5" style="font-size: 1.2rem"></i>Dashboard</p>
                 </router-link>
             </div>
 

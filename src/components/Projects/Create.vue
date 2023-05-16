@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Image</p>
                         <div class="flex items-center">
                             <img v-if="project.image" class="h-40 w-40" :src="project.image">
@@ -67,7 +67,7 @@
                     <div class="pb-4">
                         <p class="pb-1 text-gray-500">Details</p>
                         <Editor v-model="project.details" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -99,11 +99,11 @@ export default {
             project: {
                 title: "",
                 client_name: "",
-                details: "",
+                // details: "",
                 featured: null,
                 category: null,
                 link: null,
-                image: null
+                // image: null
             },
             statuses: [
                 {
@@ -136,11 +136,11 @@ export default {
                     this.$toast.add({severity: 'success', summary: 'Success!', detail: response.data.response, closable: false, life: 3000})
                     this.project.title= ""
                     this.project.client_name = ""
-                    this.project.details = ""
+                    // this.project.details = ""
                     this.project.featured = null
                     this.project.category = null
                     this.project.link = null
-                    this.project.image = null
+                    // this.project.image = null
                 }
                 else {
                     this.$toast.add({severity: 'error', summary: 'Error!', detail: response.data.response, closable: false, life: 3000})
@@ -148,14 +148,14 @@ export default {
             })
         },
 
-        projectImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e =>{
-                this.project.image = e.target.result;
-            };
-        }
+        // projectImage(e){
+        //     const image = e.target.files[0];
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(image);
+        //     reader.onload = e =>{
+        //         this.project.image = e.target.result;
+        //     };
+        // }
     }
 }
 </script>

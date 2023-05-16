@@ -13,19 +13,19 @@
                         <InputText type="text" class="w-full dropdown-height" v-model="category.title" placeholder="Category Title" />
                     </div>
 
-                    <div class="pb-6">
+                    <!-- <div>
                         <p class="pb-1 text-gray-500">Image</p>
                         <div class="flex items-center">
-                            <img v-if="category.image" class="h-40 w-40" :src="category.image">
-                            <img v-else class="h-40 w-40 border border-gray-300" src="../../assets/empty_image.jpg">
+                            <img v-if="category.image" class="h-20" :src="category.image">
+                            <img v-else class="h-20 border border-gray-300" src="../../assets/empty_image.jpg">
                             <input :class="category.image ? 'ml-4' : 'ml-4'" type="file" accept="image/*" @change="categoryImage">
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="pb-4">
+                    <!-- <div class="pb-4">
                         <p class="pb-1 text-gray-500">Description</p>
                         <Editor v-model="category.description" editorStyle="height: 320px" />
-                    </div>
+                    </div> -->
                     
                     <div class="flex justify-center py-10">
                         <button @click="submit" class="submit-button">Submit</button>
@@ -53,8 +53,8 @@ export default {
             host: "https://catchlab-api.smicee.com",
             category: {
                 title: "",
-                description: "",
-                image: null
+                // description: "something",
+                // image: null
             }
         }
     },
@@ -66,8 +66,7 @@ export default {
                 if(response.data.code == 200) { 
                     this.$toast.add({severity: 'success', summary: 'Success!', detail: response.data.response, closable: false, life: 3000})
                     this.category.title= ""
-                    this.category.description = ""
-                    this.category.image = null
+                    // this.category.image= null
                 }
                 else {
                     this.$toast.add({severity: 'error', summary: 'Error!', detail: response.data.response, closable: false, life: 3000})
@@ -75,14 +74,14 @@ export default {
             })
         },
 
-        categoryImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = e =>{
-                this.category.image = e.target.result;
-            };
-        }
+        // categoryImage(e){
+        //     const image = e.target.files[0];
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(image);
+        //     reader.onload = e =>{
+        //         this.category.image = e.target.result;
+        //     };
+        // }
     }
 }
 </script>

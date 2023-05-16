@@ -7,7 +7,7 @@
                 <div class="">
                     <DataTable ref="dt" :value="services" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
 
-                        <Column field="serial" header="#" style="width: 5rem">
+                        <Column field="serial" header="#" style="width: 10rem">
                             <template #body="{ data }">
                                 {{ services.indexOf(data) + 1 }}
                             </template>
@@ -15,14 +15,14 @@
                         
                         <Column field="title" header="Service Title" :sortable="true" style="min-width:25rem"></Column>
 
-                        <Column :exportable="false" header="Description" :sortable="true" style="min-width:12rem">
+                        <!-- <Column :exportable="false" header="Description" :sortable="true" style="min-width:12rem">
                             <template #body="{data}">
                                 <div v-if="data.description.length < 200" v-html="data.description"></div>
                                 <div v-else v-html="data.description.substring(0, 200)"></div>
                             </template>
-                        </Column>
+                        </Column> -->
 
-                        <Column :exportable="false" header="Icon" :sortable="true" style="min-width:12rem">
+                        <Column :exportable="false" header="Icon" :sortable="true" style="min-width:24rem">
                             <template #body="{data}">
                                 <img class="rounded-md w-20 h-20" :src="host + data.icon" alt="">
                             </template>
