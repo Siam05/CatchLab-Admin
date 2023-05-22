@@ -99,6 +99,34 @@
                 </div>
             </div>
 
+            <!-- Jobs  -->
+            <div class="my-2">
+                <p class="flex items-center px-6 py-3 mb-2 font-semibold cursor-pointer rounded-md text-white" @click="showJobs" :class="{ 'clicked': $route.meta.isJobsOpen }"><i class="pi pi-briefcase pr-5" style="font-size: 1.2rem"></i>Jobs</p>
+
+                <div v-if="$route.meta.isJobsOpen || displayJobs" class="text-sm">
+                    <router-link to="/job-position/create">
+                        <div :class="$route.meta.isJobPositionCreate ? 'text-primary font-semibold' : 'text-white'" class="flex px-16 py-2 items-center hover:font-semibold" @click="selectCreateJobPosition">
+                            <i class="pi pi-file-edit pr-2" style="font-size: 0.8rem"></i>
+                            <p class="flex justify-start">Create Position</p>
+                        </div>
+                    </router-link>
+
+                    <router-link to="/job-positions/view">
+                        <div :class="$route.meta.isJobPositionView ? 'text-primary font-semibold' : 'text-white'" class="flex px-16 py-2 items-center hover:font-semibold" @click="selectViewJobPosition">
+                            <i class="pi pi-eye pr-2" style="font-size: 0.8rem"></i>
+                            <p class="flex justify-start">View Positions</p>
+                        </div>
+                    </router-link>
+
+                    <router-link to="/job-applications/view">
+                        <div :class="$route.meta.isJobApplicationView ? 'text-primary font-semibold' : 'text-white'" class="flex px-16 py-2 items-center hover:font-semibold" @click="selectViewJobApplication">
+                            <i class="pi pi-eye pr-2" style="font-size: 0.8rem"></i>
+                            <p class="flex justify-start">Applications</p>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+
             <!-- Site Settings -->
             <div class="my-1">
                 <router-link to="/site-settings">
@@ -135,11 +163,17 @@ export default {
             clientCreateColor: false,
             clientViewColor: false,
 
+            showJobsColor: true,
+            jobPositionCreateColor: false,
+            jobPositionViewColor: false,
+            jobApplicationViewColor: false,
+
             displayDashboard: false,
-            displayClients: false,
             displayServices: false,
             displayCategories: false,
             displayProjects: false,
+            displayClients: false,
+            displayJobs: false,
             displaySiteSettings: false
         }
     },
@@ -148,50 +182,25 @@ export default {
         showDashboard() {
             if(this.displayDashboard == false) {
                 this.displayDashboard = true
-                this.displayClients = false
                 this.displayServices = false
                 this.displayCategories = false
                 this.displayProjects = false
+                this.displayClients = false
+                this.displayJobs = false
                 this.displaySiteSettings = false
             } else {
                 this.displayDashboard = true
             }
         },
 
-        showClients() {
-            if (this.displayClients == false) {
-                this.displayClients = true
-                this.displayDashboard = false
-                this.displayServices = false
-                this.displayCategories = false
-                this.displayProjects = false
-                this.displaySiteSettings = false
-            } else {
-                this.displayClients = true
-            }
-        },
-
-        selectCreateClient() {
-            this.$route.meta.isClientOpen = true
-            this.showClientColor = false
-            this.clientCreateColor = true
-            this.clientViewColor = false
-        },
-
-        selectViewClient() {
-            this.$route.meta.isClientOpen = true
-            this.showClientColor = false
-            this.clientCreateColor = false
-            this.clientViewColor = true
-        },
-
         showServices() {
             if (this.displayServices == false) {
+                this.displayDashboard = false
                 this.displayServices = true
                 this.displayCategories = false
-                this.displayDashboard = false
-                this.displayClients = false
                 this.displayProjects = false
+                this.displayClients = false
+                this.displayJobs = false
                 this.displaySiteSettings = false
             } else {
                 this.displayServices = true
@@ -214,11 +223,12 @@ export default {
 
         showCategories() { 
             if (this.displayCategories == false) {
+                this.displayDashboard = false
+                this.displayServices = false
                 this.displayCategories = true
                 this.displayProjects = false
-                this.displayDashboard = false
                 this.displayClients = false
-                this.displayServices = false
+                this.displayJobs = false
                 this.displaySiteSettings = false
             } else {
                 this.displayCategories = true
@@ -241,11 +251,12 @@ export default {
 
         showProjects() { 
             if (this.displayProjects == false) {
-                this.displayProjects = true
                 this.displayDashboard = false
-                this.displayClients = false
                 this.displayServices = false
                 this.displayCategories = false
+                this.displayProjects = true
+                this.displayClients = false
+                this.displayJobs = false
                 this.displaySiteSettings = false
             } else {
                 this.displayProjects = true
@@ -266,14 +277,73 @@ export default {
             this.projectViewColor = true
         },
 
-        showSiteSettings() {            
-            if(this.displaySiteSettings == false) {
-                this.displaySiteSettings = true
+        showClients() {
+            if (this.displayClients == false) {
                 this.displayDashboard = false
-                this.displayClients = false
                 this.displayServices = false
                 this.displayCategories = false
                 this.displayProjects = false
+                this.displayClients = true
+                this.displayJobs = false
+                this.displaySiteSettings = false
+            } else {
+                this.displayClients = true
+            }
+        },
+
+        selectCreateClient() {
+            this.$route.meta.isClientOpen = true
+            this.showClientColor = false
+            this.clientCreateColor = true
+            this.clientViewColor = false
+        },
+
+        selectViewClient() {
+            this.$route.meta.isClientOpen = true
+            this.showClientColor = false
+            this.clientCreateColor = false
+            this.clientViewColor = true
+        },
+
+        showJobs() {
+            if (this.displayJobs == false) {
+                this.displayDashboard = false
+                this.displayServices = false
+                this.displayCategories = false
+                this.displayProjects = false
+                this.displayClients = false
+                this.displayJobs = true
+                this.displaySiteSettings = false
+            } else {
+                this.displayJobs = true
+            }
+        },
+
+        selectCreateJobPosition() {
+            this.$route.meta.isJobsOpen = true
+            this.showJobsColor = false
+            this.jobPositionCreateColor = true
+            this.jobPositionViewColor = false
+            this.jobApplicationViewColor = false
+        },
+
+        selectViewJobPosition() {
+            this.$route.meta.isJobsOpen = true
+            this.showJobsColor = false
+            this.jobPositionCreateColor = false
+            this.jobPositionViewColor = true
+            this.jobApplicationViewColor = false
+        },
+
+        showSiteSettings() {            
+            if(this.displaySiteSettings == false) {
+                this.displayDashboard = false
+                this.displayServices = false
+                this.displayCategories = false
+                this.displayProjects = false
+                this.displayClients = false
+                this.displayJobs = false
+                this.displaySiteSettings = true
             } else {
                 this.displaySiteSettings = true
             }

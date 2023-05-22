@@ -1,0 +1,141 @@
+<template>
+    <div class="w-full flex flex-col bg-gray-100 screen-height">
+        <Toast :breakpoints="{'640px': {width: '80%', right: '0'}}" />
+        <div class="bg-white rounded-md p-6 m-6">
+            <p class="text-left text-xl font-semibold pb-6">View Job Positions</p>
+            <div>
+                <div class="">
+                    <DataTable ref="dt" :value="job_positions" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Job Positions" responsiveLayout="scroll">
+
+                        <Column field="serial" header="#" style="width: 5rem">
+                            <template #body="{ data }">
+                                {{ job_positions.indexOf(data) + 1 }}
+                            </template>
+                        </Column>
+                        
+                        <Column field="title" header="Title" :sortable="true" style="min-width:15rem"></Column>
+
+                        <Column field="job_description.type" header="Type" :sortable="true" style="min-width:8rem"></Column>
+
+                        <Column field="job_description.salary" header="Salary" :sortable="true" style="min-width:8rem"></Column>
+
+                        <Column header="Deadline" :sortable="true" style="min-width:8rem">
+                            <template #body="{data}">
+                                <div class="">
+                                    <p>{{ getDeadLine(data.deadline) }}</p>
+                                </div>
+                            </template>
+                        </Column>
+
+                        <Column header="Active" :sortable="true" style="min-width:8rem">
+                            <template #body="{data}">
+                                <p v-if="data.is_active == true" class="w-10 p-0.5 bg-secondary text-white flex items-center justify-center rounded-md">Yes</p>
+                                <p v-else class="w-10 p-0.5 bg-red-700 text-white flex items-center justify-center rounded-md">No</p>
+                            </template>
+                        </Column>
+
+                        <Column header="Action" :exportable="false" style="min-width:8rem">
+                            <template #body="slotProps">
+                                <div class="flex">
+                                    <div class="">
+                                        <router-link :to="{ path: '/job-position/edit/' + slotProps.data.id }">
+                                            <button class="bg-secondary hover:bg-primary rounded-full w-9 h-9"><i class="pi pi-pencil" style="font-size: 1rem; color: white;"></i></button>
+                                        </router-link>
+                                    </div>
+                                    <div class="ml-2">
+                                        <button @click="confirmDeleteJobPosition(slotProps.data)" class="bg-red-700 hover:bg-red-800 rounded-full w-9 h-9"><i class="pi pi-trash" style="font-size: 1rem; color: white;"></i></button>
+                                    </div>
+                                </div>
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
+
+                <!-- Delete Dialog -->
+                <Dialog v-model:visible="deleteJobPositionDialog" :style="{width: '450px'}" header="Confirm" :modal="true">
+                    <div class="confirmation-content">
+                        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+                        <span v-if="temp_job_position">Are you sure you want to delete <b>{{ temp_job_position.title }}</b>?</span>
+                    </div>
+                    <template #footer>
+                        <Button label="No" icon="pi pi-times" class="p-button-text" @click="deleteJobPositionDialog = false" />
+                        <Button label="Yes" icon="pi pi-check" class="p-button-text" @click="deleteJobPosition(temp_job_position.id)" />
+                    </template>
+                </Dialog>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+import InputText from 'primevue/inputtext';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Dialog from 'primevue/dialog';
+import Button from 'primevue/button';
+import moment from "moment";
+import Toast from 'primevue/toast';
+
+export default {
+    components: {
+        InputText,
+        DataTable,
+        Column,
+        Dialog,
+        Button,
+        moment,
+        Toast
+    },
+
+    data() {
+        return {
+            host: "https://api.catchbangladesh.com",
+
+            deleteJobPositionDialog: false,
+            temp_job_position: {}
+        }
+    },
+
+    computed: {
+        ...mapState ({
+            job_positions: state => state.jobs.job_positions
+        })
+    },
+
+    mounted() {
+        this.$store.dispatch('jobs/getJobPositions')
+    },
+
+    methods: {
+        getDeadLine (deadline) {
+            return moment(deadline).format('MMMM Do, YYYY')
+        },
+
+        confirmDeleteJobPosition (jobPosition) {
+            this.temp_job_position = jobPosition;
+            this.deleteJobPositionDialog = true;
+        },
+
+        deleteJobPosition (id) {
+            this.$store.dispatch("jobs/deleteJobPosition", id).then(response => {
+                console.log(response.data)    
+                if(response.data.status == 200) { 
+                    this.$toast.add({severity: 'success', summary: 'Success!', detail: response.data.message, closable: false, life: 3000})
+                }
+                else {
+                    this.$toast.add({severity: 'error', summary: 'Error!', detail: response.data.message, closable: false, life: 3000})
+                }
+            })
+            this.deleteJobPositionDialog = false;
+            this.jobPosition = {};
+        },
+    }
+}
+</script>
+
+<style scoped>
+.p-button {
+    @apply border border-green-200 hover:border-green-300
+}
+</style>

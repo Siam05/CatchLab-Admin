@@ -18,6 +18,11 @@ import EditProjects from '../views/projects/edit/[id].vue'
 import CreateClients from '../views/clients/create/index.vue'
 import ViewClients from '../views/clients/view/index.vue'
 
+import CreatePosition from '../views/jobs/createPosition/index.vue'
+import ViewPosition from '../views/jobs/viewPosition/index.vue'
+import EditPosition from '../views/jobs/editPosition/[id].vue'
+import ViewApplication from '../views/jobs/viewApplication/index.vue'
+
 import SiteSettings from '../views/site-settings/index.vue'
 
 const routes = [
@@ -37,30 +42,6 @@ const routes = [
         component: Login,
         meta: {
             hideSidebar: true,
-        }
-    },
-
-    // Clients
-    {
-        path: '/clients/create',
-        name: 'CreateClients',
-        component: CreateClients,
-        meta: {
-            login_required: true,
-            hideSidebar: false,
-            isClientOpen: true,
-            isClientCreate: true
-        }
-    },
-    {
-        path: '/clients/view',
-        name: 'ViewClients',
-        component: ViewClients,
-        meta: {
-            login_required: true,
-            hideSidebar: false,
-            isClientOpen: true,
-            isClientView: true
         }
     },
 
@@ -163,6 +144,75 @@ const routes = [
             login_required: true,
             hideSidebar: false,
             isProjectOpen: true
+        }
+    },
+
+    // Clients
+    {
+        path: '/clients/create',
+        name: 'CreateClients',
+        component: CreateClients,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isClientOpen: true,
+            isClientCreate: true
+        }
+    },
+    {
+        path: '/clients/view',
+        name: 'ViewClients',
+        component: ViewClients,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isClientOpen: true,
+            isClientView: true
+        }
+    },
+
+    // Jobs
+    {
+        path: '/job-position/create',
+        name: 'CreatePosition',
+        component: CreatePosition,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isJobsOpen: true,
+            isJobPositionCreate: true
+        }
+    },
+    {
+        path: '/job-positions/view',
+        name: 'ViewPosition',
+        component: ViewPosition,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isJobsOpen: true,
+            isJobPositionView: true
+        }
+    },
+    {
+        path: '/job-position/edit/:id',
+        name: 'EditPosition',
+        component: EditPosition,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isJobsOpen: true
+        }
+    },
+    {
+        path: '/job-applications/view',
+        name: 'ViewApplication',
+        component: ViewApplication,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isJobsOpen: true,
+            isJobApplicationView: true
         }
     },
 

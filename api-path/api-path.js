@@ -27,6 +27,15 @@ const V1API = {
     'edit_client': host + '/api/client/update/',
     'delete_client': host + '/api/client/delete/',
 
+    'get_job_positions': host + '/api/jobs/position',
+    'create_job_position': host + '/api/jobs/position/create',
+    'get_job_position_by_id': host + '/api/jobs/position/',
+    'edit_job_position': host + '/api/jobs/position/edit/',
+    'delete_job_position': host + '/api/jobs/position/delete/',
+
+    'get_job_applications': host + '/api/jobs/applications',
+    'delete_job_application': host + '/api/jobs/applications/delete/',
+
     'get_site_settings': host + '/api/home/settings/',
     'create_site_settings': host + '/api/home/settings/create',
 }
