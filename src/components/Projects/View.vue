@@ -5,7 +5,7 @@
             <p class="text-left text-xl font-semibold pb-6">View Projects</p>
             <div>
                 <div class="">
-                    <DataTable ref="dt" :value="projects" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
+                    <DataTable ref="dt" :value="projects" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Projects" responsiveLayout="scroll">
 
                         <Column field="serial" header="#" style="width: 5rem">
                             <template #body="{ data }">
@@ -27,12 +27,6 @@
                                 <p v-else class="w-8 p-0.5 bg-red-700 text-white flex items-center justify-center rounded-md">No</p>
                             </template>
                         </Column>
-
-                        <!-- <Column :exportable="false" header="Image" :sortable="true" style="min-width:15rem">
-                            <template #body="{data}">
-                                <img class="rounded-md w-20 h-20" :src="host + data.image" alt="">
-                            </template>
-                        </Column> -->
 
                         <Column header="Action" :exportable="false" style="min-width:10rem">
                             <template #body="slotProps">

@@ -335,6 +335,14 @@ export default {
             this.jobApplicationViewColor = false
         },
 
+        selectViewJobApplication() {
+            this.$route.meta.isJobsOpen = true
+            this.showJobsColor = false
+            this.jobPositionCreateColor = false
+            this.jobPositionViewColor = false
+            this.jobApplicationViewColor = true
+        },
+
         showSiteSettings() {            
             if(this.displaySiteSettings == false) {
                 this.displayDashboard = false

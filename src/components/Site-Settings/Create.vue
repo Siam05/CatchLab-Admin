@@ -49,7 +49,7 @@
                         <Textarea class="w-full" v-model="site_setting.description" :autoResize="true" rows="4" cols="30" placeholder="Description" />
                     </div>
 
-                    <div class="pb-4">
+                    <div class="pb-6">
                         <p class="pb-1 text-gray-500">Logo</p>
                         <div class="flex items-center">
                             <img class="h-24" :src="show_logo">

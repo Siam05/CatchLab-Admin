@@ -5,7 +5,7 @@
             <p class="text-left text-xl font-semibold pb-6">View Client List</p>
             <div>
                 <div class="w-full">
-                    <DataTable ref="dt" :value="clients" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
+                    <DataTable ref="dt" :value="clients" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Clients" responsiveLayout="scroll">
 
                         <Column field="serial" header="#" style="width: 5rem">
                             <template #body="{ data }">

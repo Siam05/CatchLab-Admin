@@ -58,20 +58,15 @@
                         </div>
 
                         <div class="w-full pl-3">
-                            <p class="pb-1 text-gray-500">Job Post</p>
-                            <InputText type="text" class="w-full dropdown-height" v-model="job_description.post" placeholder="Job post" />
+                            <p class="pb-1 text-gray-500">Job Salary</p>
+                            <InputText type="text" class="w-full dropdown-height" v-model="job_description.salary" placeholder="Job Salary" />
                         </div>
                     </div>
 
                     <div class="flex pb-4">
-                        <div class="w-full pr-3">
+                        <div class="w-1/2 pr-3">
                             <p class="pb-1 text-gray-500">Job Location</p>
                             <InputText type="text" class="w-full dropdown-height" v-model="job_description.location" placeholder="Job Location" />
-                        </div>
-
-                        <div class="w-full pl-3">
-                            <p class="pb-1 text-gray-500">Job Salary</p>
-                            <InputText type="text" class="w-full dropdown-height" v-model="job_description.salary" placeholder="Job Salary" />
                         </div>
                     </div>
 

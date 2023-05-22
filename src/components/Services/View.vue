@@ -5,7 +5,7 @@
             <p class="text-left text-xl font-semibold pb-6">View Services</p>
             <div>
                 <div class="">
-                    <DataTable ref="dt" :value="services" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
+                    <DataTable ref="dt" :value="services" stripedRows dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Services" responsiveLayout="scroll">
 
                         <Column field="serial" header="#" style="width: 10rem">
                             <template #body="{ data }">
@@ -14,13 +14,6 @@
                         </Column>
                         
                         <Column field="title" header="Service Title" :sortable="true" style="min-width:25rem"></Column>
-
-                        <!-- <Column :exportable="false" header="Description" :sortable="true" style="min-width:12rem">
-                            <template #body="{data}">
-                                <div v-if="data.description.length < 200" v-html="data.description"></div>
-                                <div v-else v-html="data.description.substring(0, 200)"></div>
-                            </template>
-                        </Column> -->
 
                         <Column :exportable="false" header="Icon" :sortable="true" style="min-width:24rem">
                             <template #body="{data}">
